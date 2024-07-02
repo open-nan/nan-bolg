@@ -1,0 +1,22 @@
+---
+import config from '@/config'
+const {giscus} = config
+---
+<div class="comment box">
+  <script src="https://giscus.app/client.js"
+    data-repo={ giscus.dataRepo }
+    data-repo-id={ giscus.dataRepoId }
+    data-category={ giscus.dataCategory }
+    data-category-id={ giscus.dataCategoryId }
+    data-mapping={ giscus.dataMapping }
+    data-strict={ giscus.dataStrict }
+    data-reactions-enabled={ giscus.dataReactionsEnabled }
+    data-emit-metadata={ giscus.dataEmitMetadata }
+    data-input-position={ giscus.dataInputPosition }
+    data-theme={ giscus.dataTheme }
+    data-loading={ giscus.dataLoading }
+    data-lang={ giscus.dataLang }
+    crossorigin={ giscus.crossorigin }
+    async>
+  </script>
+</div>

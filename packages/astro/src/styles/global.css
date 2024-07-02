@@ -1,0 +1,27 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+:root{
+  --font-family-heading: Georgia Pro, Crimson, Georgia, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", STHeiti, "Microsoft YaHei", SimSun, sans-serif;
+  --font-family-mono: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+
+  --navbar-horizontal-padding: 1.5rem;
+  --navbar-vertical-padding: 0.7rem;
+  --dark-grey: #666;
+  --text-color: #2c3e50;
+  --navbar-height: 3.75rem; 
+  /* 背景颜色 */
+  --bg-color-float: #fff; 
+  /* 卡片阴影 */
+  --card-shadow: rgba(0, 0, 0, 0.15);
+  /* 颜色过渡时间 */
+  --color-transition: 0.3s ease;
+  /*字体颜色*/
+  --post-title-color: #576573;
+  --post-text-color:  #4b5a69;
+  --post-normal-color: #a3a3a6;
+  --post-font-size: 1.2rem
+
+}

@@ -1,0 +1,64 @@
+---
+// import TreeList from '@/components/TreeList/index.astro'
+import SlugLayout from '@/layouts/slug.layout.astro'
+import GiscusComment from '@/components/GiscusComment/index.astro'
+
+import { RemarkMD } from '@/utils/remark';
+import { getFrontmatter } from '@nan-pack/note';
+import { allPageList } from '@nan-pack/note';
+import { toPageURl } from '@/utils/file-utils';
+
+
+export function getStaticPaths () {
+ return allPageList.map(item=>({params: {slug: toPageURl(item)}, props: {path: item}}))
+}
+
+interface Props {
+  path: string;
+}
+const { path } = Astro.props
+const frontmatter = getFrontmatter(path)
+const remarkMD = new RemarkMD(path)
+---
+<SlugLayout title="About">
+	<div class="container">
+		<div class="directory">
+			<!-- <TreeList data={directory} childKey='child'>
+				{(v:any)=> (<span class="tree-list-item">{ v?.title }</span>)}
+			</TreeList> -->
+		</div>
+		<div class="post-content-container box">
+      <div class="">
+        <div class="post-title">
+          <h1>{ frontmatter.title }</h1>
+        </div>
+        <div class="post-date">
+          <p>{ frontmatter.date }</p>
+        </div>
+      </div>
+			<Fragment set:html={remarkMD.toHtml()} />
+		</div>
+
+    <GiscusComment />
+	</div>
+</SlugLayout>
+<style>
+	.container{
+		padding: 20px 0;
+	}
+	.box{
+		max-width: 700px;
+		margin: 0 auto;
+		border-radius: 0.4rem;
+		box-shadow: 0 1px 3px 1px var(--card-shadow);
+		padding: 20px;
+	}
+	.box:not(:last-child){
+		margin-bottom: 20px;
+	}
+
+	.directory :global(ul){
+		list-style: none;
+		padding-left: 10px;
+	}
+</style>

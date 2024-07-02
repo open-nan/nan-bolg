@@ -1,0 +1,49 @@
+---
+import HomeLayout from '../layouts/home.layout.astro'
+import PostExcerpt from '@/components/PostExcerpt/index.astro'
+import banner from '../assets/images/banner-2023-02-27.webp'
+import { allPageList } from '@nan-pack/note';
+const postList = allPageList
+---
+<HomeLayout title="About">
+	<main class="page-main">
+		<div class="banner" style={`background: url(${banner.src}) center center / cover no-repeat`}>
+		</div>
+		<div class="post-list">
+			{
+				postList.map((path) =>(
+					<article class="item post-content-container">
+						<PostExcerpt filePath={path}></PostExcerpt>
+					</article>
+				))
+			}
+		</div>
+	</main>
+</HomeLayout>
+<style lang="less">
+.banner {
+	height: calc(100vh - var(--navbar-height)) !important;
+	background-position-y: top !important;
+}
+.post-list{
+	flex: 1;
+  max-width: 780px;
+	margin: 0 auto;
+	padding: 20px;
+	.item{
+		display: block;
+		padding: 0.75rem 1.25rem;
+		border-radius: 0.4rem;
+		background: var(--bg-color-float);
+		color: inherit;
+		box-shadow: 0 1px 3px 1px var(--card-shadow);
+		transition: background var(--color-transition), box-shadow var(--color-transition);
+		&:not(:last-child){
+			margin-bottom: 1rem;
+		}
+	}
+}
+
+</style>
+
+

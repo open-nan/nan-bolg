@@ -1,0 +1,19 @@
+---
+import '@/styles/content.less'
+import { toPageURl } from '@/utils/file-utils';
+import { RemarkMD } from '@/utils/remark'
+import { getFrontmatter } from '@nan-pack/note';
+interface Props{
+  filePath: string
+}
+const { filePath } = Astro.props
+const frontmatter = getFrontmatter(filePath)
+const ramarkMD = new RemarkMD(filePath)
+
+---
+<!-- title -->
+<a href={toPageURl(filePath, 'post')} class="post-title">
+  {frontmatter?.title}
+</a>
+<!-- content-->
+<Fragment set:html={ramarkMD.toExcerpt()} />

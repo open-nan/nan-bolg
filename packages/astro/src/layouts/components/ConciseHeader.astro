@@ -1,0 +1,46 @@
+---
+import config from '@/config'
+import SymbolIcon from '@/components/SymbolIcon/index.astro'
+const { author } = config
+
+---
+<header class="header">
+  <div class="left">
+    <a class="home-link" href={Astro.site?.href}>
+      <h2 class="author-name">{ author.name }</h2>
+    </a>
+  </div>
+
+  <div class="right">
+    <a class="icon-github" href={author.github} target="_blank">
+      <SymbolIcon name="logo-github" embed/>
+    </a>
+  </div>
+</header>
+
+<style>
+  .header{
+    height: var(--navbar-height);
+    width: 100%;
+    padding: var(--navbar-vertical-padding) var(--navbar-horizontal-padding);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: saturate(150%) blur(12px);
+    position: fixed;
+    top: 0;
+  }
+  .home-link{
+    text-decoration: none;
+    color: var(--text-color);
+  }
+  .icon-github{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    padding: 6px;
+    color: var(--dark-grey);
+
+  }
+</style>

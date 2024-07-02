@@ -1,0 +1,16 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"],
+      "@utils/*": ["utils/*"],
+    },
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node"],
+    "lib": ["es2020"]
+  },
+  "include": ["src/**/*.ts", "utils/**/*.ts", "./index.ts"],
+  "exclude": ["node_modules", "dist"]
+}

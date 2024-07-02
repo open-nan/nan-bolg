@@ -1,0 +1,32 @@
+---
+import fs from 'fs';
+import path from 'path';
+interface Props{
+  name: string; // 图标的名字
+  class?: string; // 图标的class
+  embed?: boolean; // 是否内联
+}
+const {class: className, name, embed} = Astro.props;
+let svg = `<use xlink:href="#${name}"></use>`
+
+let viewBoxValue = null
+if(embed){
+  svg = fs.readFileSync(path.join(process.cwd(), '/src/assets/iconfont', '/icons', `${name}.svg`), 'utf-8');
+  // 获取 viewBox
+  const viewBoxRegex = /viewBox="([^"]*)"/;
+  const match = svg.match(viewBoxRegex);
+  viewBoxValue = match ? match[1] : '0 0 512 512'; 
+  // 去除最外层的<svg></svg>
+  svg = svg.replace(/<svg.*?>/, '');
+}
+---
+<svg class={className} aria-hidden="true" viewBox={viewBoxValue}>
+  <Fragment set:html={svg} />
+</svg>
+
+<style>
+  svg{
+    width: 100%;
+    height: 100%;
+  }
+</style>

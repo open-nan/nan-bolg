@@ -1,0 +1,27 @@
+---
+import CommonLinks from './common/common.links.astro'
+import ConciseHeader  from './components/ConciseHeader.astro'
+
+const { title } = Astro.props
+---
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>{title}</title>
+  <CommonLinks></CommonLinks>
+  <slot name="head"></slot>
+</head>
+<body>
+  <ConciseHeader></ConciseHeader>
+  <main class="main">
+    <slot name="main"></slot>
+  </main>
+</body>
+</html>
+<style>
+body{
+  padding-top: var(--navbar-height);
+}
+</style>
+

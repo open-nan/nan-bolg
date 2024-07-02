@@ -1,0 +1,33 @@
+---
+interface Props{
+  childKey: string
+  data: any[]
+}
+const {data, childKey} = Astro.props
+---
+<ul>
+{data.map(item=>(
+  <li>
+    { Astro.slots.has('default') &&
+      <Fragment set:html={Astro.slots.render('default', [item])} />
+    }
+    {
+    
+      item[childKey]===undefined? 
+      (
+        <slot />
+      )
+      :
+      (
+        <Astro.self data={item[childKey]} childKey={childKey}>
+          {(i: unknown) => (
+            Astro.slots.has('default') &&
+            <Fragment set:html={Astro.slots.render('default', [i])} />
+          )}
+        </Astro.self>
+      )
+    }
+  </li>
+))}
+</ul>
+

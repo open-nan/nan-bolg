@@ -1,0 +1,26 @@
+{
+  "name": "@nan-pack/astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "clinic": "clinic heap --on-port 'wrk http://localhost:3000' --  node ./node_modules/astro/astro.js check",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/rss": "^4.0.7",
+    "@nan-pack/note": "workspace:^1.0.0",
+    "@nan-pack/remark": "workspace:^1.0.0",
+    "astro": "^4.11.1",
+    "typescript": "^5.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "less": "^4.2.0",
+    "sharp": "^0.33.4"
+  }
+}

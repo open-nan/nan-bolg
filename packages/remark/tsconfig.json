@@ -1,0 +1,17 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "lib": ["es2018"],
+    "paths": {
+      "@plugins/*": ["plugins/*"],
+      "@lib/*": ["lib/*"],
+    },
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node"]
+  },
+  "include": ["plugins/**/*.ts", "lib/**/*.ts", "./index.ts"],
+  "exclude": ["node_modules", "dist"]
+}

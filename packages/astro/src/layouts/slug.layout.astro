@@ -1,0 +1,14 @@
+---
+import '@/styles/content.less'
+import CommonLayout from './common.layout.astro'
+import MermaidScript from './common/mermaid.script.astro'
+---
+<CommonLayout>
+  <Fragment slot="head">
+    <MermaidScript />
+  </Fragment>
+
+  <Fragment slot="main" class="main">
+    <slot></slot>
+  </Fragment>
+</CommonLayout>

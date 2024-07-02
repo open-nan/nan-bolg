@@ -1,0 +1,85 @@
+{
+  "// 解决莫名其妙的rg进程疯狂占用CPU的问题": "",
+  "// 详见：https://github.com/microsoft/vscode/issues/98594": "",
+  "search.followSymlinks": false,
+
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+
+  "editor.rulers": [120],
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "// 把formatOnSave关闭，以防默认的文件格式化配置和Eslint和Prettier冲突": "",
+  "editor.formatOnSave": false,
+  "editor.formatOnPaste": false,
+  "// 当我们每次保存文件的时候就可以自动fix文件的错误格式": "",
+  "// 但VSCode好像对autoFixOnSave这个配置支持的不是很好，有时无法识别": "",
+  "editor.autoFixOnSave": true,
+  "editor.wordWrap": "off",
+  "editor.detectIndentation": false,
+  "editor.emptySelectionClipboard": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never",
+    "source.fixAll.eslint": "explicit"
+  },
+
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "dist": true,
+    "**/node_modules": false
+  },
+
+  "eslint.run": "onSave",
+  "eslint.nodePath": "./node_modules",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 120,
+
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.validate.enable": true,
+
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": [
+    "qiduoduo"
+  ]
+}
