@@ -26,7 +26,7 @@ export class RemarkMD{
 
       let innUrl: string = getFullPath(str)
       if(pathType === 'relative'){ // 如果是相对链接就拼接上当前目录
-        innUrl = getFullPath(path.dirname(this.path), str)
+        innUrl = getFullPath(path.join(path.dirname(this.path), str))
       }
 
       if(!isExist(innUrl))return str

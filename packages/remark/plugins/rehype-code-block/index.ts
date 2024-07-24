@@ -2,25 +2,30 @@ import { visit, SKIP} from 'unist-util-visit'
 import type { Root, Element, } from 'hast'
 
 
-export function rehypeCodeBlock() {
+export const defaultLanguages = [
+  'ts', 'js',  'javesrcpit', 'html', 'css',  'md', 'vue',
+  'c', 'c++', 'c#', 'cpp', 'go', 'golang',
+  'sh', 'json', 'yaml',
+]
+
+export function rehypeCodeBlock(languages: string[] = defaultLanguages) {
   return function (tree: Root) {
     let hasCode = false
 
     visit(tree, 'element', function (node: Element, index, parent) {
-      if (node.tagName !== 'pre') {
-        return
-      }
-      hasCode = true
+      if (node.tagName !== 'pre') return
+
       const code = node.children[0] as unknown as Element
       const classNames = code.properties?.className as string[]
       const classNamelanguage = classNames?.find((className) =>
         className.startsWith('language-')
       )
+
       const language = classNamelanguage ? classNamelanguage.slice(9): 'sh'
 
-      if (!language) {
-        return
-      }
+      if (!language||!languages.includes(language)) return
+
+      hasCode = true
 
       const languageElement: Element = {
         type: 'element',
@@ -44,7 +49,7 @@ export function rehypeCodeBlock() {
                 type: 'element',
                 tagName: 'use',
                 properties: { 'xlink:href': '#code-copy'},
-                children: [],  
+                children: [],
               },
             ],
           },
@@ -57,7 +62,7 @@ export function rehypeCodeBlock() {
                 type: 'element',
                 tagName: 'use',
                 properties: { 'xlink:href': '#success-hook'},
-                children: [],  
+                children: [],
               },
             ],
           },
@@ -70,7 +75,7 @@ export function rehypeCodeBlock() {
                 type: 'element',
                 tagName: 'use',
                 properties: { 'xlink:href': '#fail-cross'},
-                children: [],  
+                children: [],
               },
             ],
           }

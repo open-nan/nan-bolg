@@ -3,14 +3,24 @@
   "compilerOptions": {
     "rootDir": "./",
     "baseUrl": "./",
-    "paths": {
-      "@src/*": ["src/*"],
-      "@utils/*": ["utils/*"],
-    },
-    "typeRoots": ["./node_modules/@types"],
+    "outDir": "./dist",
     "types": ["node"],
-    "lib": ["es2020"]
+    "lib": ["es2020"],
+    "allowJs": true,
+    "composite": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "typeRoots": ["./node_modules/@types"],
+    "module": "commonjs",
+    "target": "es6"
   },
-  "include": ["src/**/*.ts", "utils/**/*.ts", "./index.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["script/**/*.ts", "./main.ts", "./config.ts", "./type.ts", ".cache/**/**.json", ".cache/**/**.js"],
+  "exclude": ["node_modules"],
 }

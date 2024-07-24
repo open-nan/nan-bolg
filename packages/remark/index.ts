@@ -12,17 +12,15 @@ import rehypeStringify from 'rehype-stringify'
 import remarkGfm from 'remark-gfm'
 import remarkToc from 'remark-toc';
 import remarkMath from 'remark-math';
-// @ts-ignore
-import rehypeMathjax from 'rehype-mathjax'
 import rehypeShiki from '@shikijs/rehype'
+
 
 import {rehypeLink, type RewriteUrlType} from './plugins/rehype-link'
 import {rehypeCodeBlock} from './plugins/rehype-code-block';
 import {rehypeExcerpt} from './plugins/rehype-excerpt'
 import {remarkMermaid} from './plugins/remark-mermaid'
 import {remarkHint} from './plugins/remark-hint'
-
-
+import {rehypeKatex} from './plugins/rehype-katex'
 
 export abstract class Parser<T extends Record<string, any>>{
     core = unified()
@@ -47,24 +45,27 @@ export abstract class Parser<T extends Record<string, any>>{
 export type CommonParserOption = {
   rewriteLinkUrl?: (type: RewriteUrlType, str: string) => string
 }
-export class CommonParser <T extends ExcerptParserOption> extends Parser<T>{
+export class CommonParser <T extends CommonParserOption> extends Parser<T>{
   protected parser(option: T){
-      this.core.use(remarkMermaid)
+      this.core
+      .use(remarkMermaid)
       .use(remarkHint)
       .use(remarkGfm)
       .use(remarkToc)
       .use(remarkMath)
   }
   protected compiler(option: T){
-      this.core.use(rehypeMathjax)
+      this.core
+      .use(rehypeKatex)
       .use(rehypeCodeBlock)
-      .use(rehypeShiki, {
-          themes: {
-              light: 'vitesse-light',
-              dark: 'vitesse-dark',
-          }
-      })
       .use(rehypeLink, {rewriteUrl: option.rewriteLinkUrl})
+      .use(rehypeShiki, {
+        // or `theme` for a single theme
+        themes: {
+          light: 'vitesse-light',
+          dark: 'vitesse-dark',
+        }
+      })
   }
 }
 

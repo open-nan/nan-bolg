@@ -1,4 +1,3 @@
-import {CommonParser, type CommonParserOption, ExcerptParser, type ExcerptParserOption} from "@nan-pack/remark"
 import * as fs from "fs"
 
 
